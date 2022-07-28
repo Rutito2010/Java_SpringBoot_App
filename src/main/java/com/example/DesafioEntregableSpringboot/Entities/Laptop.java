@@ -1,7 +1,10 @@
 package com.example.DesafioEntregableSpringboot.Entities;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 
+@Builder
 @Entity
 @Table(name="Laptops")
 public class Laptop {
