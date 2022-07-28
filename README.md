@@ -8,6 +8,7 @@
 <li>localhost8080/api/Laptops/ = A traves de Postman con el metodo POST se puede crear una nueva Laptop</li>
 <li>localhost:8080/api/Laptops/ = A traves de Postman con metodo DELETE vacia la base de datos</li>
 <li>localhost:8080/api/Laptops/(numero de id) = Borra una laptop en paticular a traves de Postman con metodo DELETE</li>
+<li>localhost:8080/api/Laptops/ = Actualiza una laptop en paticular a traves de Postman con metodo PUT</li>
 <li>localhost:8080/swagger-ui/ = Documentacion swagger</li>
 </ul>
 
