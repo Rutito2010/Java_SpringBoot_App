@@ -5,6 +5,7 @@ import com.example.DesafioEntregableSpringboot.Repository.LaptopRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -18,26 +19,62 @@ public class LaptopController {
     }
 
     @GetMapping("/api/Laptops")
-    public List<Laptop> getLaptops() {
-        return laptopRepository.findAll();
+
+    public ResponseEntity<List<Laptop> >getLaptops() {
+        List<Laptop> list =laptopRepository.findAll() ;
+        if(list.size() != 0) {
+            return  ResponseEntity.ok(list);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/api/Laptops/{id}")
-            public ResponseEntity<Laptop> getBuId(@PathVariable Long id) {
+            public ResponseEntity<Laptop> getById(@PathVariable Long id) {
         Optional<Laptop> result = laptopRepository.findById(id);
-        if (result.isPresent()) {
-            return ResponseEntity.ok(result.get());}
-            else{
+        return result.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        }
+
+        @PostMapping("/api/Laptops")
+    public ResponseEntity<Laptop> createLaptop(@RequestBody Laptop laptop){
+        if(laptop.getId() != null){
+            return ResponseEntity.badRequest().build();
+        }else{
+            Laptop created =laptopRepository.save(laptop);
+            return ResponseEntity.ok(created);
+        }
+
+
+    }
+        @PutMapping("/api/Laptops")
+    public ResponseEntity<Laptop>  updateLaptop (@RequestBody Laptop laptop){
+        if(laptop.getId()== null){
+            return ResponseEntity.badRequest().build();
+        }else{
+            if(laptopRepository.existsById(laptop.getId())){
+                return ResponseEntity.ok(laptopRepository.save(laptop));
+            }else{
+                return ResponseEntity.notFound().build();
+            }
+        }
+    }
+
+        @DeleteMapping("/api/Laptops/{id}")
+    public ResponseEntity<Void> deleteLaptop(@PathVariable("id") Long id) {
+            if (laptopRepository.existsById(id)) {
+                laptopRepository.deleteById(id);
+                return ResponseEntity.noContent().build();
+            } else {
                 return ResponseEntity.notFound().build();
             }
         }
 
-        @PostMapping("/api/Laptops")
-    public void laptop(@RequestBody Laptop laptop){
-        laptopRepository.save(laptop);
-
-    }
-    }
+        @DeleteMapping("/api/Laptops")
+    public ResponseEntity<Void> deleteAllLaptops() {
+        laptopRepository.deleteAll();
+        return ResponseEntity.noContent().build();
+        }
+}
 
 
 
