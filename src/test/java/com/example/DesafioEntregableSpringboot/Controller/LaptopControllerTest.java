@@ -54,7 +54,7 @@ class LaptopControllerTest {
 
 
 
-    @Test
+   /* @Test
     @Order(3)
     void getLaptops() {
         ResponseEntity<Laptop[]> response=
@@ -66,24 +66,24 @@ class LaptopControllerTest {
              assertEquals(HttpStatus.OK, response.getStatusCode());
         }
 
-    }
+    }*/
 
 
-    @Test
-    @Order(2)
-    void getById() {
-        ResponseEntity<Laptop> response=
-        testRestTemplate.getForEntity("/api/Laptops/1", Laptop.class );
+    //@Test
+    //@Order(2)
+   // void getById() {
+      //  ResponseEntity<Laptop> response=
+        //testRestTemplate.getForEntity("/api/Laptops/1", Laptop.class );
 
-        if(response.getBody()==null) {
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());}
-        else{
-            assertEquals(HttpStatus.OK, response.getStatusCode());
-        }
-    }
+        //if(response.getBody()==null) {
+        //assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());}
+        //else{
+          //  assertEquals(HttpStatus.OK, response.getStatusCode());
+        //}
+    //}
 
 
-    @Test
+   /* @Test
     @Order(4)
     void createLaptop() {
         HttpHeaders headers = new HttpHeaders();
@@ -97,18 +97,15 @@ class LaptopControllerTest {
         "precio": 1100,
         "espacio":"2 terabyte"
         }
-        """;
+        """;*/
 
 
-        HttpEntity<String> request=  new HttpEntity<>(json, headers);
+      /*  HttpEntity<String> request=  new HttpEntity<>(json, headers);
              ResponseEntity<Laptop> response = testRestTemplate.exchange("/api/Laptops",HttpMethod.POST,request,Laptop.class);
                  Laptop result= response.getBody();
            assertEquals(2L,result.getId());
            assertEquals("asus 2500G", result.getModelo());
-    }
+    }*/
 
-    @Test
-    void deleteAllLaptops() {
 
-    }
 }

@@ -17,6 +17,12 @@
 <li>Testing de rutas con JUnit</li>
 <li>Documentacion con Swagger</li>
 <li>Actualmente base de datos con h2(proximamente base de datos relacionales o no relacionales)</li>
-
+<li>Seguridad en rutas por tipo de usuario</li>
+<ul>Datos:
+<li>Rol USER : name: user, password: Rutito2010</li>
+<li>Rol ADMIN : name: admin, password: Julieta2010</li>
+<li>Para la ruta inicial se requiere cualquiera de los 2 usuarios, para la rutas "/api/Laptops/ se requerira usuario admin</li>
+<li>localhost:8080/logout ruta para cambiar cerrar sesion con cada usuario</li>
+</ul>
 
 </ul>

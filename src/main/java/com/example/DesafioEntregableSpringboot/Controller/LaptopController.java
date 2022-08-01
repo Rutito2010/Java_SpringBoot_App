@@ -2,6 +2,7 @@ package com.example.DesafioEntregableSpringboot.Controller;
 
 import com.example.DesafioEntregableSpringboot.Entities.Laptop;
 import com.example.DesafioEntregableSpringboot.Repository.LaptopRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +12,8 @@ import java.util.Optional;
 
 @RestController
 public class LaptopController {
-
+    @Value("${app.message")
+    String message ;
     private LaptopRepository laptopRepository;
 
     public LaptopController(LaptopRepository laptopRepository) {
