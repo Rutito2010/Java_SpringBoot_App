@@ -1,6 +1,9 @@
 <h1>Ejerrcicio en Limpio Java SpringBoot</h1>
 <h3>El desafio arranca con 2 laptops que se crean automaticamente en la DB</h3>
 
+<h2>Disponible deploy del backend para probar !!</h2>
+<h3>Enlace: https://spring-boot-appexample.herokuapp.com/  + endpoints, (tener en cuenta los inicios de sesion)</h3>   
+
 <h2>Rutas</h2>
 <ul><li>localhost8080/  = Saludo al usuario</li>
 <li>localhost8080/api/Laptops = Retorna lista de laptops con metodo GET</li>
